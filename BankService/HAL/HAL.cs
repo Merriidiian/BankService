@@ -12,14 +12,14 @@ public static class HAL
         links.self = new { href = $"{baseUrl}" };
         if (index < total)
         {
-            links.next = new { href = $"{baseUrl}?index={index + count}" };
-            links.final = new { href = $"{baseUrl}?index={total - (total % count)}&count={count}" };
+            links.next = new { href = $"{baseUrl}/hal/?index={index + count}" };
+            links.final = new { href = $"{baseUrl}/hal/?index={total - (total % count)}&count={count}" };
         }
 
         if (index > 0)
         {
-            links.prev = new { href = $"{baseUrl}?index={index - count}" };
-            links.first = new { href = $"{baseUrl}?index=0" };
+            links.prev = new { href = $"{baseUrl}/hal/?index={index - count}" };
+            links.first = new { href = $"{baseUrl}/hal/?index=0" };
         }
 
         return links;
@@ -32,15 +32,15 @@ public static class HAL
         {
             account = new
             {
-                href = $"{baseUrl}{user.Accounts}"
+                href = $"{baseUrl}/account/{user.Accounts.Inn}"
             },
             card = new
             {
-                href = $"{baseUrl}{user.Cards}"
+                href = $"{baseUrl}/card/{user.Cards.Number}"
             },
             client = new
             {
-                href = $"{baseUrl}{user.Client}"
+                href = $"{baseUrl}/client/{user.Client.Id}"
             }
         };
         return resource;

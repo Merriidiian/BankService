@@ -4,6 +4,7 @@ namespace BankService;
 
 public interface IDataRepository
 {
+    //GET
     Task<IEnumerable<Account>> GetAllAccounts();
     Task<Account> GetAccount(string number);
     
@@ -16,4 +17,6 @@ public interface IDataRepository
     Task<IEnumerable<FullUserInfo>> GetAllUsersInfo();
     Task<FullUserInfo> GetUserInfo(int id);
 
+    //POST
+    
 }

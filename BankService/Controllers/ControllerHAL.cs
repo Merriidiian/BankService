@@ -1,8 +1,7 @@
-﻿using BankService;
-using BankService.HAL;
+﻿using BankService.HAL;
 using Microsoft.AspNetCore.Mvc;
 
-
+namespace BankService.Controllers;
 
 [Route("api/bank")]
 [ApiController]
@@ -10,7 +9,7 @@ public class ControllerHAL : ControllerBase
 {
     private readonly IDataRepository _repository;
     const int PAGE_SIZE = 5;
-    private const string url = "/api/bank/hal";
+    private const string url = "/api/bank";
 
     public ControllerHAL(IDataRepository repository)
     {
@@ -27,7 +26,7 @@ public class ControllerHAL : ControllerBase
         var items = _repository.GetAllUsersInfo().Result.Skip(index).Take(count)
             .Select(v => v.ToResource(url));
         var total = _repository.GetAllUsersInfo().Result.Count();
-        var _links = HAL.PaginateAsDynamic(url, index, count, total);
+        var _links = HAL.HAL.PaginateAsDynamic(url, index, count, total);
         var result = new
         {
             _links,
