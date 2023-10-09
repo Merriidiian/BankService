@@ -17,5 +17,5 @@ public class Client
     [DataType(DataType.Date)]
     [Required]
     public DateTime BirthdayData { get; set; }
-    
+
 }

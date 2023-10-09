@@ -14,24 +14,60 @@ public class ControllerClient : ControllerBase
     {
         _repository = repository;
     }
-
     [HttpGet]
-    private IEnumerable<Client> GetClients()
+    public async Task<IActionResult> GetClients()
     {
-        return _repository.GetAllClients().Result;
+        return Ok(await _repository.GetAllClients());
     }
 
-    [HttpGet("{id}")]
-    public IActionResult GetClient(int id)
+    [HttpGet]
+    [Route("{id}")]
+    public async Task<IActionResult> GetClient(int id)
     {
-        if (id == null)
-        {
-            return NotFound();
-        }
-
         try
         {
-            return Ok(_repository.GetClient(id));
+            var result = await _repository.GetAllClients();
+            return Ok(result.FirstOrDefault(n => n.Id == id));
+        }
+        catch (Exception e)
+        {
+            return NotFound(e.Message);
+        }
+    }
+
+    [HttpPost]
+    [Route("{id}")]
+    public async Task<IActionResult> PostClient(int id, Client client)
+    {
+        try
+        {
+            return Ok(await _repository.PostClient(id, client));
+        }
+        catch (Exception e)
+        {
+            return NotFound(e.Message);
+        }
+    }
+
+    [HttpPut]
+    public async Task<IActionResult> PutClient(Client client)
+    {
+        try
+        {
+            return Ok(await _repository.PutClient(client));
+        }
+        catch (Exception e)
+        {
+            return NotFound(e.Message);
+        }
+    }
+
+    [HttpDelete]
+    public async Task<IActionResult> DeleteClient(int id)
+    {
+        try
+        {
+            return Ok(await _repository.DeleteClient(id));
         }
         catch (Exception e)
         {

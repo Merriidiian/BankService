@@ -15,7 +15,7 @@ public class ControllerHAL : ControllerBase
     {
         _repository = repository;
     }
-    
+
 
     // GET: api/bank/hal
     [Route("hal")]
@@ -23,9 +23,18 @@ public class ControllerHAL : ControllerBase
     [Produces("application/hal+json")]
     public async Task<IActionResult> Get(int index = 0, int count = PAGE_SIZE)
     {
-        var items = _repository.GetAllUsersInfo().Result.Skip(index).Take(count)
+        var accounts = await _repository.GetAllAccounts();
+        var cards = await _repository.GetAllCards();
+        var clients = await _repository.GetAllClients();
+        var item = new
+        {
+            accounts, cards, clients
+        };
+
+        var items = await _repository.GetFullUsers();
+        var itemsResult = items.Skip(index).Take(count)
             .Select(v => v.ToResource(url));
-        var total = _repository.GetAllUsersInfo().Result.Count();
+        var total = _repository.GetFullUsers().Result.Count();
         var _links = HAL.HAL.PaginateAsDynamic(url, index, count, total);
         var result = new
         {
@@ -37,5 +46,4 @@ public class ControllerHAL : ControllerBase
         };
         return Ok(result);
     }
-    
 }

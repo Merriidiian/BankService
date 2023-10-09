@@ -1,4 +1,5 @@
-﻿using BankService.Models;
+using BankService.DTOs;
+using BankService.Models;
 
 namespace BankService;
 
@@ -6,17 +7,24 @@ public interface IDataRepository
 {
     //GET
     Task<IEnumerable<Account>> GetAllAccounts();
-    Task<Account> GetAccount(string number);
-    
     Task<IEnumerable<Card>> GetAllCards();
-    Task<Card> GetCard(string number);
-    
     Task<IEnumerable<Client>> GetAllClients();
-    Task<Client> GetClient(int id);
-    
-    Task<IEnumerable<FullUserInfo>> GetAllUsersInfo();
-    Task<FullUserInfo> GetUserInfo(int id);
 
     //POST
+    Task<bool> PostAccount(string number, Account account);
+    Task<bool> PostCard(string number, Card card);
+    Task<bool> PostClient(int id, Client client);
+
+    //PUT
+    Task<bool> PutAccount(Account account);
+    Task<bool> PutCard(Card card);
+    Task<bool> PutClient(Client client);
+
+    //DELETE
+    Task<bool> DeleteAccount(string number);
+    Task<bool> DeleteCard(string number);
+    Task<bool> DeleteClient(int id);
     
+    //FULL USER
+    Task<IEnumerable<FullUserInfo>> GetFullUsers();
 }

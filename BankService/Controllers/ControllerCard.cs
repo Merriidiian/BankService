@@ -16,22 +16,59 @@ public class ControllerCard : ControllerBase
     }
 
     [HttpGet]
-    private IEnumerable<Card> GetCards()
+    public async Task<IActionResult> GetCards()
     {
-        return _repository.GetAllCards().Result;
+        return Ok(await _repository.GetAllCards());
     }
 
-    [HttpGet("{id}")]
-    public IActionResult GetCard(string id)
+    [HttpGet]
+    [Route("{number}")]
+    public async Task<IActionResult> GetCard(string number)
     {
-        if (id == null)
-        {
-            return NotFound();
-        }
-
         try
         {
-            return Ok(_repository.GetCard(id));
+            var result = await _repository.GetAllCards();
+            return Ok(result.FirstOrDefault(n => n.Number == number));
+        }
+        catch (Exception e)
+        {
+            return NotFound(e.Message);
+        }
+    }
+
+    [HttpPost]
+    [Route("{number}")]
+    public async Task<IActionResult> PostCard(string number, Card card)
+    {
+        try
+        {
+            return Ok(await _repository.PostCard(number, card));
+        }
+        catch (Exception e)
+        {
+            return NotFound(e.Message);
+        }
+    }
+
+    [HttpPut]
+    public async Task<IActionResult> PutCard(Card card)
+    {
+        try
+        {
+            return Ok(await _repository.PutCard(card));
+        }
+        catch (Exception e)
+        {
+            return NotFound(e.Message);
+        }
+    }
+
+    [HttpDelete]
+    public async Task<IActionResult> DeleteCard(string number)
+    {
+        try
+        {
+            return Ok(await _repository.DeleteCard(number));
         }
         catch (Exception e)
         {

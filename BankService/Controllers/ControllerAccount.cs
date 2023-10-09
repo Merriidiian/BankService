@@ -14,23 +14,61 @@ public class ControllerAccount : ControllerBase
     {
         _repository = repository;
     }
-    
+
     [HttpGet]
-    private IEnumerable<Account> GetAccounts()
+    public async Task<IActionResult> GetAccounts()
     {
-        return _repository.GetAllAccounts().Result;
+        return Ok(await _repository.GetAllAccounts());
     }
-    
-    [HttpGet("{id}")]
-    public IActionResult GetAccount(string id)
+
+    [HttpGet]
+    [Route("{number}")]
+    public async Task<IActionResult> GetAccount(string number)
     {
-        if (id == null)
-        {
-            return NotFound();
-        }
         try
         {
-            return Ok(_repository.GetAccount(id));
+            var result = await _repository.GetAllAccounts();
+            return Ok(result.FirstOrDefault(n => n.Number == number));
+        }
+        catch (Exception e)
+        {
+            return NotFound(e.Message);
+        }
+    }
+
+    [HttpPost]
+    [Route("{number}")]
+    public async Task<IActionResult> PostAccount(string number, Account account)
+    {
+        try
+        {
+            return Ok(await _repository.PostAccount(number, account));
+        }
+        catch (Exception e)
+        {
+            return NotFound(e.Message);
+        }
+    }
+
+    [HttpPut]
+    public async Task<IActionResult> PutAccount(Account account)
+    {
+        try
+        {
+            return Ok(await _repository.PutAccount(account));
+        }
+        catch (Exception e)
+        {
+            return NotFound(e.Message);
+        }
+    }
+
+    [HttpDelete]
+    public async Task<IActionResult> DeleteAccount(string number)
+    {
+        try
+        {
+            return Ok(await _repository.DeleteAccount(number));
         }
         catch (Exception e)
         {

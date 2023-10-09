@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel;
 using System.Dynamic;
+using BankService.DTOs;
 using BankService.Models;
 
 namespace BankService.HAL;
@@ -32,11 +33,11 @@ public static class HAL
         {
             account = new
             {
-                href = $"{baseUrl}/account/{user.Accounts.Inn}"
+                href = $"{baseUrl}/account/{user.Account}"
             },
             card = new
             {
-                href = $"{baseUrl}/card/{user.Cards.Number}"
+                href = $"{baseUrl}/card/{user.Cards}"
             },
             client = new
             {

@@ -8,6 +8,8 @@ public class Card
     [Required]
     public string Number { get; set; }
     [Required]
+    public string NumberAccount { get; set; }
+    [Required]
     public DateTime EndTime { get; set; }
     [Required]
     public int Svv { get; set; }
