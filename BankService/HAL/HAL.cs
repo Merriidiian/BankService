@@ -33,11 +33,12 @@ public static class HAL
         {
             account = new
             {
-                href = $"{baseUrl}/account/{user.Account}"
+                href = $"{baseUrl}/account/{user.Account.Number}"
             },
-            card = new
+            cards = new
             {
-                href = $"{baseUrl}/card/{user.Cards}"
+                hrefBegin = $"{baseUrl}/card/{user.Cards.First().Number}",
+                hrefFinish = $"{baseUrl}/card/{user.Cards.Last().Number}"
             },
             client = new
             {

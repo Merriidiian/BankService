@@ -8,5 +8,11 @@ public sealed class ClientGraphTypes : ObjectGraphType<Client> {
     {
         Name = "client";
         Field(c => c.Id).Description("The id of the client, e.g. 1, 2, 3");
+        Field(c => c.Name);
+        Field(c => c.Surname);
+        Field(c => c.Patronymic);
+        Field(c => c.BirthdayData);
+        Field(c => c.Passport);
+        
     }
 }

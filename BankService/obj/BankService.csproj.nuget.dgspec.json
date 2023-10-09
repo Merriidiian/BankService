@@ -50,23 +50,23 @@
             },
             "GraphQL": {
               "target": "Package",
-              "version": "[7.6.1, )"
+              "version": "[4.7.1, )"
             },
             "GraphQL.MicrosoftDI": {
               "target": "Package",
-              "version": "[7.6.1, )"
+              "version": "[4.7.1, )"
             },
             "GraphQL.Server.Transports.AspNetCore.SystemTextJson": {
               "target": "Package",
-              "version": "[5.2.2, )"
+              "version": "[5.2.0, )"
             },
             "GraphQL.Server.Ui.Altair": {
               "target": "Package",
-              "version": "[7.6.0, )"
+              "version": "[5.2.0, )"
             },
             "GraphQL.SystemTextJson": {
               "target": "Package",
-              "version": "[7.6.1, )"
+              "version": "[4.7.1, )"
             },
             "Microsoft.AspNetCore.OpenApi": {
               "target": "Package",

@@ -9,5 +9,8 @@ public sealed class CardGraphTypes : ObjectGraphType<Card>
     {
         Name = "card";
         Field(c => c.Number).Description("The number of the card, e.g. 1, 2, 3");
+        Field(c => c.NumberAccount);
+        Field(c => c.Svv);
+        Field(c => c.EndTime);
     }
 }

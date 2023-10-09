@@ -32,7 +32,6 @@ D:\C# projects\BankService\BankService\obj\Debug\net7.0\BankService.pdb
 D:\C# projects\BankService\BankService\obj\Debug\net7.0\BankService.genruntimeconfig.cache
 D:\C# projects\BankService\BankService\obj\Debug\net7.0\ref\BankService.dll
 D:\C# projects\BankService\BankService\bin\Debug\net7.0\GraphQL.dll
-D:\C# projects\BankService\BankService\bin\Debug\net7.0\GraphQLParser.dll
 D:\C# projects\BankService\BankService\bin\Debug\net7.0\GraphQL.DataLoader.dll
 D:\C# projects\BankService\BankService\bin\Debug\net7.0\GraphQL.MicrosoftDI.dll
 D:\C# projects\BankService\BankService\bin\Debug\net7.0\GraphQL.NewtonsoftJson.dll
@@ -60,3 +59,4 @@ D:\C# projects\BankService\BankService\bin\Debug\net7.0\Mono.TextTemplating.dll
 D:\C# projects\BankService\BankService\bin\Debug\net7.0\Npgsql.dll
 D:\C# projects\BankService\BankService\bin\Debug\net7.0\Npgsql.EntityFrameworkCore.PostgreSQL.dll
 D:\C# projects\BankService\BankService\bin\Debug\net7.0\System.CodeDom.dll
+D:\C# projects\BankService\BankService\bin\Debug\net7.0\GraphQL-Parser.dll

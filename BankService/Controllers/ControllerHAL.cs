@@ -26,11 +26,6 @@ public class ControllerHAL : ControllerBase
         var accounts = await _repository.GetAllAccounts();
         var cards = await _repository.GetAllCards();
         var clients = await _repository.GetAllClients();
-        var item = new
-        {
-            accounts, cards, clients
-        };
-
         var items = await _repository.GetFullUsers();
         var itemsResult = items.Skip(index).Take(count)
             .Select(v => v.ToResource(url));
@@ -42,7 +37,7 @@ public class ControllerHAL : ControllerBase
             count,
             total,
             index,
-            items
+            itemsResult
         };
         return Ok(result);
     }
