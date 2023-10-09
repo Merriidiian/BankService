@@ -7,6 +7,6 @@ public class BankSchema : Schema
 {
     public BankSchema(IDataRepository repository)
     {
-        Query = new ClientQuery(repository);
+        Query = new BankQuery(repository);
     }
 }
